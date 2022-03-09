@@ -1,0 +1,6 @@
+<RCC>
+    <qresource prefix="/">
+        <file>defaultMaterial.mtl</file>
+        <file>defaultMaterial.obj</file>
+    </qresource>
+</RCC>

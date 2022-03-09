@@ -1,0 +1,17 @@
+<RCC>
+    <qresource prefix="/">
+        <file>cube.png</file>
+        <file>desk.jpg</file>
+        <file>skybox.jpeg</file>
+        <file>skybox.png</file>
+        <file>skyboxx.png</file>
+        <file>skubox3.png</file>
+        <file>nebo.png</file>
+        <file>skybox4.jpg</file>
+        <file>pngegg.png</file>
+        <file>normal_map.jpg</file>
+        <file>brick.png</file>
+        <file>Abstract_Organic_006_basecolor.jpg</file>
+        <file>Abstract_Organic_006_normal.jpg</file>
+    </qresource>
+</RCC>
