@@ -3,8 +3,8 @@
 
 #include <QOpenGLBuffer>
 #include <QMatrix4x4>
-#include "Types.h"
-#include "Transformational.h"
+#include "Engine/Types.h"
+#include "Engine/Transformational.h"
 
 class QOpenGLShaderProgram;
 class QOpenGLFunctions;

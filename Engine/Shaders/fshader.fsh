@@ -19,10 +19,59 @@ varying highp vec2 v_texcoord;
 varying highp vec3 v_normal;
 varying highp mat3 v_tbnMatrix;
 varying highp vec4 v_lightDirection;
-varying highp vec4 v_positinLightMatrix;
+varying highp vec4 v_positionLightMatrix;
+
+float SampleShadowMap(sampler2D map, vec2 coords, float compare)
+{
+    vec4 v = texture2D(map, coords);
+    float value = v.x * 255.0 + (v.y * 255.0 + (v.z * 255.0 + v.w) / 255.0) / 255.0;
+    return step(compare, value);
+}
+
+float LinearInterpolation(sampler2D map, vec2 coords, float compare, vec2 texelSize)
+{
+    vec2 pixelPos = coords / texelSize + 0.5;
+    vec2 fractPart = fract(pixelPos);
+    vec2 startTexel = (pixelPos - fractPart) * texelSize;
+
+    float blTexel = SampleShadowMap(map, startTexel, compare);
+    float brTexel = SampleShadowMap(map, startTexel + vec2(texelSize.x, 0.0), compare);
+    float tlTexel = SampleShadowMap(map, startTexel + vec2(0.0, texelSize.y), compare);
+    float trTexel = SampleShadowMap(map, startTexel + texelSize, compare);
+
+    float mixA = mix(blTexel, tlTexel, fractPart.y);
+    float mixB = mix(brTexel, trTexel, fractPart.y);
+
+    return mix(mixA, mixB, fractPart.x);
+}
+
+float ShadowMapPCF(sampler2D map, vec2 coords, float compare, vec2 texelSize)
+{
+    float result = 0.0;
+    for (float y = -4.0; y < 4.0; y += 1.0)
+        for (float x = -4.0; x < 4.0; x += 1.0)
+        {
+            vec2 offset = vec2(x, y) * texelSize;
+            result += LinearInterpolation(map, coords + offset, compare, texelSize);
+        }
+    return result / 81.0;
+}
+
+float CalcShadowAmount(sampler2D map, vec4 shadowCoordsInit)
+{
+    vec3 tmp = v_positionLightMatrix.xyz / v_positionLightMatrix.w;
+    tmp = tmp * vec3(0.5) + vec3(0.5);
+    float offset = 10.0;
+    offset *= dot(v_normal, v_lightDirection.xyz);
+
+    return ShadowMapPCF(u_shadowMap, tmp.xy, tmp.z * 255.0 + offset, vec2(1.0 / 1024));
+}
 
 void main(void)
 {
+
+    highp float shadowCoef = CalcShadowAmount(u_shadowMap, v_positionLightMatrix);
+
     vec4 resultColor = vec4(0.0, 0.0, 0.0, 0.0);
     vec4 eyePosition = vec4(0.0, 0.0, 0.0, 1.0);
     vec4 diffMatColor = texture2D(u_diffuseMap, v_texcoord);
@@ -50,6 +99,9 @@ void main(void)
     vec4 specularColor = vec4(1.0, 1.0, 1.0, 1.0) * u_lightPower * pow(max(0.0, dot(reflectLight, -eyeVect)), specularFactor);
     resultColor += specularColor * vec4(u_materialProperty.specularColor, 1.0);
 
-    gl_FragColor = resultColor;
+    shadowCoef += 0.15;
+    if(shadowCoef > 1.0) shadowCoef = 1.0;
+
+    gl_FragColor = resultColor * shadowCoef;
 
 }

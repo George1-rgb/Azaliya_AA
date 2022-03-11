@@ -21,7 +21,7 @@ MainWindow::~MainWindow()
 
 void MainWindow::resizeEvent(QResizeEvent *event)
 {
-    scene->resize(event->size().width(), event->size().height());
+    scene->resize(event->size().width(), event->size().height() - event->size().height() / 5.0f);
 }
 
 void MainWindow::setup()
@@ -37,5 +37,17 @@ void MainWindow::updateWindow()
     int yCenter = (height() / 2) - (scene->height() / 2);
     scene->move(xCenter, yCenter);
     update();
+}
+
+
+void MainWindow::on_sphereButton_clicked()
+{
+    scene->createSphere();
+}
+
+
+void MainWindow::on_thoreButton_clicked()
+{
+    scene->createThore();
 }
 

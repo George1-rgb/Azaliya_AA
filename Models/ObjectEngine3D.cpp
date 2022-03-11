@@ -5,7 +5,7 @@
 #include <QTextStream>
 #include <QVector3D>
 #include <QString>
-#include "Types.h"
+#include "Engine/Types.h"
 
 ObjectEngine3D::ObjectEngine3D()
 {
@@ -22,7 +22,7 @@ void ObjectEngine3D::loadObjectFromFile(const QString &path)
     }
 
     objFile.open(QIODevice::ReadOnly);
-    qDebug() << "File " << path << "was open successfull!";
+    qDebug() << "Object file was open" << path;
     QTextStream input(&objFile);
 
     QVector<QVector3D> coords;

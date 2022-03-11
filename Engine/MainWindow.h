@@ -18,6 +18,11 @@ public:
     ~MainWindow();
 protected:
     virtual void resizeEvent(QResizeEvent *event) override;
+private slots:
+    void on_sphereButton_clicked();
+
+    void on_thoreButton_clicked();
+
 private:
     Ui::MainWindow *ui;
     widget* scene;

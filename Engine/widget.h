@@ -30,6 +30,8 @@ public:
     //*//
 
     //setters
+    void createSphere();
+    void createThore();
     void setAngle(QVector3D axis, float angle);
     void setScale(float Scale);
     //*//
@@ -40,7 +42,7 @@ protected:
 
 
     void initShaders();
-    void initCube(float width);
+    void initCube(float width, float height, float depth, QImage* diffuseMap = 0, QImage* normalMap = 0);
 
     virtual void mousePressEvent(QMouseEvent* event) override;
     virtual void mouseMoveEvent(QMouseEvent* event) override;

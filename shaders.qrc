@@ -1,10 +1,10 @@
 <RCC>
     <qresource prefix="/">
-        <file>fshader.fsh</file>
-        <file>vshader.vsh</file>
-        <file>skybox.vsh</file>
-        <file>skybox.fsh</file>
-        <file>depthShader.vsh</file>
-        <file>depthShader.fsh</file>
+        <file>Engine/Shaders/depthShader.fsh</file>
+        <file>Engine/Shaders/depthShader.vsh</file>
+        <file>Engine/Shaders/fshader.fsh</file>
+        <file>Engine/Shaders/skybox.fsh</file>
+        <file>Engine/Shaders/skybox.vsh</file>
+        <file>Engine/Shaders/vshader.vsh</file>
     </qresource>
 </RCC>

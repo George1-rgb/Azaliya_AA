@@ -9,29 +9,31 @@ LIBS += -LD:\Qt\6.2.1\mingw81_64\lib\libQt5OpenGL.a -lopengl32
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
-    Camera.cpp \
-    Group.cpp \
-    MainWindow.cpp \
+    Engine/Camera.cpp \
+    Engine/CreateCommand.cpp \
+    Engine/Group.cpp \
+    Engine/MainWindow.cpp \
     Models/Material.cpp \
     Models/MaterialLibrary.cpp \
     Models/ObjectEngine3D.cpp \
     Models/SimpleObject3D.cpp \
-    SkyBox.cpp \
+    Engine/SkyBox.cpp \
     main.cpp \
-    widget.cpp
+    Engine/widget.cpp
 
 HEADERS += \
-    Camera.h \
-    Group.h \
-    MainWindow.h \
+    Engine/Camera.h \
+    Engine/CreateCommand.h \
+    Engine/Group.h \
+    Engine/MainWindow.h \
     Models/Material.h \
     Models/MaterialLibrary.h \
     Models/ObjectEngine3D.h \
     Models/SimpleObject3D.h \
-    SkyBox.h \
-    Transformational.h \
-    Types.h \
-    widget.h
+    Engine/SkyBox.h \
+    Engine/Transformational.h \
+    Engine/Types.h \
+    Engine/widget.h
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
@@ -42,8 +44,8 @@ DISTFILES +=
 
 RESOURCES += \
     Models.qrc \
-    shaders.qrc \
-    texture.qrc
+    Shaders.qrc \
+    Textures.qrc
 
 FORMS += \
-    MainWindow.ui
+    Engine/MainWindow.ui

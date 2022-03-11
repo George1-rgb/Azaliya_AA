@@ -3,8 +3,8 @@
 #include <QVector>
 #include "MaterialLibrary.h"
 #include "SimpleObject3D.h"
-#include "Transformational.h"
-#include "Types.h"
+#include "Engine/Transformational.h"
+#include "Engine/Types.h"
 
 class ObjectEngine3D : public Transformational
 {

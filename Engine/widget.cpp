@@ -24,7 +24,8 @@ widget::widget(QWidget *parent)
     : QOpenGLWidget(parent)
 {
     camera = new Camera;
-    camera->translate(QVector3D(0.0f, 0.0f, -5.0f));
+    camera->translate(QVector3D(0.0f, 0.0f, -40.0f));
+    camera->rotate(QQuaternion::fromAxisAndAngle(1.0f, 1.0f, 0.0f, 45.0f));
     setFocusPolicy(Qt::StrongFocus);
     fbHeight = 1024;
     fbWidth = 1024;
@@ -49,9 +50,26 @@ widget::~widget()
     delete skyBox;
     for (int i = 0; i < objects.size(); i++)
         delete objects[i];
-    for (int i = 0; i < groups.size();  i++)
-        delete groups[i];
+//    for (int i = 0; i < groups.size();  i++)
+//        delete groups[i];
 
+}
+
+void widget::createSphere()
+{
+    objects.append(new ObjectEngine3D);
+    objects[objects.size() - 1]->loadObjectFromFile(":/Sourse/Models/defaultMaterial.obj");
+    objects[objects.size() - 1]->translate(QVector3D(8.0f, 2.0f, 0.0f));
+    transformObjects.append(objects[objects.size() - 1]);
+}
+
+void widget::createThore()
+{
+    objects.append(new ObjectEngine3D);
+    objects[objects.size() - 1]->loadObjectFromFile(":/Sourse/Models/thor.obj");
+    objects[objects.size() - 1]->scale(2.0f);
+    objects[objects.size() - 1]->translate(QVector3D(-8.0f, 2.0f, 0.0f));
+    transformObjects.append(objects[objects.size() - 1]);
 }
 //virtual openGL functions
 void widget::initializeGL()
@@ -62,53 +80,29 @@ void widget::initializeGL()
 
     initShaders();
 
-    groups.append(new Group);
 
-    float Step = 2.0f;
-    for (float x = -Step; x <= Step; x += Step)
-    {
-        for (float y = -Step; y <= Step; y += Step)
-        {
-            for (float z = -Step; z <= Step; z += Step)
-            {
-                initCube(1.0f);
-                objects[objects.size() - 1]->translate(QVector3D(x, y, z));
-                groups[groups.size() - 1]->addObject(objects[objects.size() - 1]);
-            }
-        }
-    }
-    groups[0]->translate(QVector3D(-8.0f, 0.0f, 0.0f));
-
-
-    groups.append(new Group);
-    for (float x = -Step; x <= Step; x += Step)
-    {
-        for (float y = -Step; y <= Step; y += Step)
-        {
-            for (float z = -Step; z <= Step; z += Step)
-            {
-                initCube(1.0f);
-                objects[objects.size() - 1]->translate(QVector3D(x, y, z));
-                groups[groups.size() - 1]->addObject(objects[objects.size() - 1]);
-            }
-        }
-    }
-    groups[1]->translate(QVector3D(8.0f, 0.0f, 0.0f));
-
-    groups.append(new Group);
-    groups[2]->addObject(groups[0]);
-    groups[2]->addObject(groups[1]);
-
-    transformObjects.append(groups[2]);
 
     objects.append(new ObjectEngine3D);
-    objects[objects.size() - 1]->loadObjectFromFile(":/defaultMaterial.obj");
+    objects[objects.size() - 1]->loadObjectFromFile(":/Sourse/Models/case.obj");
+    objects[objects.size() - 1]->translate(QVector3D(0.0f, 2.0f, 8.0f));
     transformObjects.append(objects[objects.size() - 1]);
 
+
+
+    //floor
+    QImage diffuseMap(":/Sourse/Models/Abstract_Organic_006_basecolor.jpg");
+    QImage normalMap(":/Sourse/Models/Abstract_Organic_006_normal.jpg");
+    initCube(40.0f, 2.0f, 40.0f, &diffuseMap, &normalMap);
+    objects[objects.size() - 1]->translate(QVector3D(0.0f, -2.0f, 0.0f));
+    transformObjects.append(objects[objects.size() - 1]);
+
+    //camera
     QMatrix4x4 tmp;
     tmp.setToIdentity();
     camera->setGlobalTransform(tmp);
-    skyBox = new SkyBox(100, QImage(":/pngegg.png"));
+
+    //skybox
+    skyBox = new SkyBox(100, QImage(":/Sourse/Models/pngegg.png"));
 
     depthBuffer = new QOpenGLFramebufferObject(fbWidth, fbHeight, QOpenGLFramebufferObject::Depth);
 
@@ -119,9 +113,7 @@ void widget::resizeGL(int width, int height)
 {
     float aspect = (float)width / (float)height;
     projectionMatrix.setToIdentity();
-    projectionMatrix.perspective(45, aspect, 0.01f, 1000.0f);
-
-
+    projectionMatrix.perspective(45, aspect, 0.01f, 10000.0f);
 }
 
 void widget::paintGL()
@@ -160,8 +152,12 @@ void widget::paintGL()
     shaderSkyBoxProgram.release();
 
     shaderProgram.bind();
+    shaderProgram.setUniformValue("u_shadowMap", GL_TEXTURE4 - GL_TEXTURE0);
     shaderProgram.setUniformValue("u_projectionMatrix", projectionMatrix);
-    shaderProgram.setUniformValue("u_lightPosition", QVector4D(0.0f, 0.0f, 0.0f, 1.0f));
+    shaderProgram.setUniformValue("u_lightDirection", QVector4D(0.0f, 0.0f, -1.0f, 0.0f));
+    shaderProgram.setUniformValue("u_projectionLightMatrix", projectionLightMatrix);
+    shaderProgram.setUniformValue("u_shadowLightMatrix", shadowLightMatrix);
+    shaderProgram.setUniformValue("u_lightMatrix", lightMatrix);
     shaderProgram.setUniformValue("u_lightPower", 1.0f);
     camera->drawModel(&shaderProgram);
     for (int i = 0; i < transformObjects.size(); i++)
@@ -173,33 +169,33 @@ void widget::paintGL()
 //*//
 void widget::initShaders()
 {
-    if(!shaderProgram.addShaderFromSourceFile(QOpenGLShader::Vertex, ":/vshader.vsh"))
+    if(!shaderProgram.addShaderFromSourceFile(QOpenGLShader::Vertex, ":/Engine/Shaders/vshader.vsh"))
         close();
-    if(!shaderProgram.addShaderFromSourceFile(QOpenGLShader::Fragment, ":/fshader.fsh"))
+    if(!shaderProgram.addShaderFromSourceFile(QOpenGLShader::Fragment, ":/Engine/Shaders/fshader.fsh"))
         close();
     if(!shaderProgram.link())
         close();
 
-    if(!shaderSkyBoxProgram.addShaderFromSourceFile(QOpenGLShader::Vertex, ":/skybox.vsh"))
+    if(!shaderSkyBoxProgram.addShaderFromSourceFile(QOpenGLShader::Vertex, ":/Engine/Shaders/skybox.vsh"))
         close();
-    if(!shaderSkyBoxProgram.addShaderFromSourceFile(QOpenGLShader::Fragment, ":/skybox.fsh"))
+    if(!shaderSkyBoxProgram.addShaderFromSourceFile(QOpenGLShader::Fragment, ":/Engine/Shaders/skybox.fsh"))
         close();
     if(!shaderSkyBoxProgram.link())
         close();
 
-    if(!shaderDepthProgram.addShaderFromSourceFile(QOpenGLShader::Vertex, ":/depthShader.vsh"))
+    if(!shaderDepthProgram.addShaderFromSourceFile(QOpenGLShader::Vertex, ":/Engine/Shaders/depthShader.vsh"))
         close();
-    if(!shaderDepthProgram.addShaderFromSourceFile(QOpenGLShader::Fragment, ":/depthShader.fsh"))
+    if(!shaderDepthProgram.addShaderFromSourceFile(QOpenGLShader::Fragment, ":/Engine/Shaders/depthShader.fsh"))
         close();
     if(!shaderDepthProgram.link())
         close();
 }
 
-void widget::initCube(float width)
+void widget::initCube(float width, float height, float depth, QImage* diffuseMap, QImage* normalMap)
 {
     float width_div_2 = width / 2.0f;
-    float height_div_2 = width_div_2;
-    float depth_div_2 = width_div_2;
+    float height_div_2 = height / 2.0f;
+    float depth_div_2 = depth / 2.0f;
     QVector<VertexData> vertexes;
     vertexes.push_back(VertexData(QVector3D(-width_div_2, height_div_2, depth_div_2), QVector2D(0.0f, 1.0f), QVector3D(0.0f, 0.0f, 1.0f)));
        vertexes.push_back(VertexData(QVector3D(-width_div_2, -height_div_2, depth_div_2), QVector2D(0.0f, 0.0f), QVector3D(0.0f, 0.0f, 1.0f)));
@@ -252,8 +248,10 @@ void widget::initCube(float width)
        }
 
     Material* newMtl = new Material;
-    newMtl->setDiffuseMap(":/Abstract_Organic_006_basecolor.jpg");
-    newMtl->setNormalMap(":/Abstract_Organic_006_normal.jpg");
+    if (diffuseMap != NULL)
+    newMtl->setDiffuseMap(*diffuseMap);
+    if (normalMap != NULL)
+    newMtl->setNormalMap(*normalMap);
     newMtl->setShines(96);
     newMtl->setDiffuseColor(QVector3D(1.0f, 1.0, 1.0f));
     newMtl->setSpecularColor(QVector3D(1.0f, 1.0, 1.0f));
@@ -297,19 +295,14 @@ void widget::timerEvent(QTimerEvent *event)
 {
     Q_UNUSED(event);
 
-  groups[0]->rotate(QQuaternion::fromAxisAndAngle(0.0f, 0.0f, 1.0f, qSin(angleGroup1)));
-   groups[0]->rotate(QQuaternion::fromAxisAndAngle(0.0f, 1.0f, 0.0f, -qSin(angleGroup1)));
+    lightRotateX += 0.5;
+    shadowLightMatrix.setToIdentity();
+    shadowLightMatrix.rotate(lightRotateX, 1.0f, 0.0f, 0.0f);
+    shadowLightMatrix.rotate(lightRotateY, 0.0f, 1.0f, 0.0f);
 
-   groups[1]->rotate(QQuaternion::fromAxisAndAngle(1.0f, 0.0f, 0.0f, qCos(angleGroup2)));
-   groups[1]->rotate(QQuaternion::fromAxisAndAngle(0.0f, 1.0f, 0.0f, -qCos(angleGroup2)));
-
-//  groups[2]->rotate(QQuaternion::fromAxisAndAngle(1.0f, 0.0f, 0.0f, qSin(angleMain)));
-//    groups[2]->rotate(QQuaternion::fromAxisAndAngle(0.0f, 1.0f, 0.0f, qCos(angleMain)));
-  // camera->rotate(QQuaternion::fromAxisAndAngle(0.0f, 1.0f, 0.0f, angleGroup1));
-    angleObject += M_PI / 180.0f;
-    angleGroup1 += M_PI / 360.0f;
-    angleGroup2 -= M_PI / 360.0f;
-    angleMain += M_PI / 720.0f;
+    lightMatrix.setToIdentity();
+    lightMatrix.rotate(-lightRotateY, 0.0f, 1.0f, 0.0f);
+    lightMatrix.rotate(-lightRotateX, 1.0f, 0.0f, 0.0f);
 
     update();
 }
