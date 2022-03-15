@@ -24,8 +24,8 @@ widget::widget(QWidget *parent)
     : QOpenGLWidget(parent)
 {
     camera = new Camera;
-    camera->translate(QVector3D(0.0f, 0.0f, -40.0f));
-    camera->rotate(QQuaternion::fromAxisAndAngle(1.0f, 1.0f, 0.0f, 45.0f));
+    camera->translate(QVector3D(0.0f, 0.0f, 0.0f));
+   // camera->rotate(QQuaternion::fromAxisAndAngle(1.0f, 1.0f, 0.0f, 45.0f));
     setFocusPolicy(Qt::StrongFocus);
     fbHeight = 1024;
     fbWidth = 1024;
@@ -55,22 +55,6 @@ widget::~widget()
 
 }
 
-void widget::createSphere()
-{
-    objects.append(new ObjectEngine3D);
-    objects[objects.size() - 1]->loadObjectFromFile(":/Sourse/Models/defaultMaterial.obj");
-    objects[objects.size() - 1]->translate(QVector3D(8.0f, 2.0f, 0.0f));
-    transformObjects.append(objects[objects.size() - 1]);
-}
-
-void widget::createThore()
-{
-    objects.append(new ObjectEngine3D);
-    objects[objects.size() - 1]->loadObjectFromFile(":/Sourse/Models/thor.obj");
-    objects[objects.size() - 1]->scale(2.0f);
-    objects[objects.size() - 1]->translate(QVector3D(-8.0f, 2.0f, 0.0f));
-    transformObjects.append(objects[objects.size() - 1]);
-}
 //virtual openGL functions
 void widget::initializeGL()
 {
@@ -80,14 +64,21 @@ void widget::initializeGL()
 
     initShaders();
 
-
+    objects.append(new ObjectEngine3D);
+    objects[objects.size() - 1]->loadObjectFromFile(":/Sourse/Models/thor.obj");
+    objects[objects.size() - 1]->scale(2.0f);
+    objects[objects.size() - 1]->translate(QVector3D(-8.0f, 2.0f, 0.0f));
+    transformObjects.append(objects[objects.size() - 1]);
 
     objects.append(new ObjectEngine3D);
     objects[objects.size() - 1]->loadObjectFromFile(":/Sourse/Models/case.obj");
     objects[objects.size() - 1]->translate(QVector3D(0.0f, 2.0f, 8.0f));
     transformObjects.append(objects[objects.size() - 1]);
 
-
+    objects.append(new ObjectEngine3D);
+    objects[objects.size() - 1]->loadObjectFromFile(":/Sourse/Models/defaultMaterial.obj");
+    objects[objects.size() - 1]->translate(QVector3D(8.0f, 2.0f, 0.0f));
+    transformObjects.append(objects[objects.size() - 1]);
 
     //floor
     QImage diffuseMap(":/Sourse/Models/Abstract_Organic_006_basecolor.jpg");
@@ -295,7 +286,7 @@ void widget::timerEvent(QTimerEvent *event)
 {
     Q_UNUSED(event);
 
-    lightRotateX += 0.5;
+    lightRotateX += 0.01;
     shadowLightMatrix.setToIdentity();
     shadowLightMatrix.rotate(lightRotateX, 1.0f, 0.0f, 0.0f);
     shadowLightMatrix.rotate(lightRotateY, 0.0f, 1.0f, 0.0f);
@@ -313,24 +304,16 @@ void widget::keyPressEvent(QKeyEvent *event)
     switch (event->key())
     {
     case Qt::Key_Left:
-        groups[0]->delObject(camera);
-        groups[1]->addObject(camera);
+
         break;
     case Qt::Key_Right:
-        groups[1]->delObject(camera);
-        groups[0]->addObject(camera);
+
         break;
     case Qt::Key_Down:
-        groups[0]->delObject(camera);
-        groups[1]->delObject(camera);
+
         break;
    case Qt::Key_Up:
-        groups[0]->delObject(camera);
-        groups[1]->delObject(camera);
-
-        QMatrix4x4 tmp;
-        tmp.setToIdentity();
-        camera->setGlobalTransform(tmp);
+        camera->translate(QVector3D(0.0f, 0.0f, 0.1f));
         break;
     }
     update();
@@ -346,7 +329,7 @@ void widget::updateAngle(QMouseEvent* event)
     float angle = diff.length() / 2.0f;
     QVector3D axis = QVector3D(diff.y(), diff.x(), 0.0f);
 
-    camera->rotate(QQuaternion::fromAxisAndAngle(axis, angle));
+    camera->rotate(QQuaternion::fromAxisAndAngle(QVector3D(1.0f, 0.0f, 0.0f), angle));
 }
 
 void widget::updateScale(QWheelEvent* event)

@@ -11,7 +11,9 @@ LIBS += -LD:\Qt\6.2.1\mingw81_64\lib\libQt5OpenGL.a -lopengl32
 SOURCES += \
     Engine/Camera.cpp \
     Engine/CreateCommand.cpp \
+    Engine/Global.cpp \
     Engine/Group.cpp \
+    Engine/Logger.cpp \
     Engine/MainWindow.cpp \
     Models/Material.cpp \
     Models/MaterialLibrary.cpp \
@@ -19,12 +21,14 @@ SOURCES += \
     Models/SimpleObject3D.cpp \
     Engine/SkyBox.cpp \
     main.cpp \
-    Engine/widget.cpp
+    Engine/widget.cpp \
 
 HEADERS += \
     Engine/Camera.h \
     Engine/CreateCommand.h \
+    Engine/Global.h \
     Engine/Group.h \
+    Engine/Logger.h \
     Engine/MainWindow.h \
     Models/Material.h \
     Models/MaterialLibrary.h \
@@ -33,7 +37,7 @@ HEADERS += \
     Engine/SkyBox.h \
     Engine/Transformational.h \
     Engine/Types.h \
-    Engine/widget.h
+    Engine/widget.h \
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

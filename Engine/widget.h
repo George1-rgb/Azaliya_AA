@@ -30,8 +30,6 @@ public:
     //*//
 
     //setters
-    void createSphere();
-    void createThore();
     void setAngle(QVector3D axis, float angle);
     void setScale(float Scale);
     //*//

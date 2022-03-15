@@ -6,7 +6,7 @@
 #include <QVector3D>
 #include <QString>
 #include "Engine/Types.h"
-
+#include "Engine/Global.h"
 ObjectEngine3D::ObjectEngine3D()
 {
 
@@ -22,9 +22,8 @@ void ObjectEngine3D::loadObjectFromFile(const QString &path)
     }
 
     objFile.open(QIODevice::ReadOnly);
-    qDebug() << "Object file was open" << path;
+    Global::instance().getLogger().log(Text, "ObjectEngine3D", "Object file was open" + path);
     QTextStream input(&objFile);
-
     QVector<QVector3D> coords;
     QVector<QVector2D> textCoords;
     QVector<QVector3D> normals;

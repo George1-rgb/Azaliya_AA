@@ -4,7 +4,7 @@
 #include <QTextStream>
 #include <QDebug>
 #include <QFileInfo>
-
+#include "Engine/Global.h"
 MaterialLibrary::MaterialLibrary()
 {
 
@@ -47,10 +47,10 @@ void MaterialLibrary::loadMaterialFromFile(const QString &path)
     QFile mtlFile(path);
     if (!mtlFile.open(QIODevice::ReadOnly))
     {
-        qDebug() << "MaterialLibrary: " << "Error reading fron file";
+
         return;
     }
-    qDebug() << "Material file was open: " << path;
+    Global::instance().getLogger().log(Text, "MaterialLibrary", "Material file was open" + path);
     for (int i = 0; i < materials.size(); i++)
         delete materials[i];
     materials.clear();
@@ -66,12 +66,11 @@ void MaterialLibrary::loadMaterialFromFile(const QString &path)
 
         if (list[0] == "#")
         {
-            qDebug() << "This is comment: " <<  str;
             continue;
         }
         else if (list[0] == "newmtl")
         {
-            qDebug() << "Added new material";
+            Global::instance().getLogger().log(Text, "MaterialLibrary", "Added new material");
             addMaterial(newMtl);
             newMtl = new Material;
             newMtl->setName(list[1]);

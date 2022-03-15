@@ -40,14 +40,3 @@ void MainWindow::updateWindow()
 }
 
 
-void MainWindow::on_sphereButton_clicked()
-{
-    scene->createSphere();
-}
-
-
-void MainWindow::on_thoreButton_clicked()
-{
-    scene->createThore();
-}
-

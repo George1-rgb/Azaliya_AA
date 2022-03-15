@@ -19,8 +19,10 @@ void Camera::rotate(const QQuaternion &r)
 
     viewMatrix.setToIdentity();
     viewMatrix.translate(Translation);
+
     viewMatrix.rotate(Rotation);
     viewMatrix.scale(Scale);
+    //GlobalTransform.rotate(Rotation);
     viewMatrix = viewMatrix * GlobalTransform.inverted();
 }
 

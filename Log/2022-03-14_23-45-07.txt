@@ -1,0 +1,10 @@
+
+23:45:07 TEXT: (ObjectEngine3D): Object file was open:/Sourse/Models/thor.obj
+23:45:07 TEXT: (MaterialLibrary): Material file was open:/Sourse/Models/thor.mtl
+23:45:07 TEXT: (MaterialLibrary): Added new material
+23:45:07 TEXT: (ObjectEngine3D): Object file was open:/Sourse/Models/case.obj
+23:45:07 TEXT: (MaterialLibrary): Material file was open:/Sourse/Models/case.mtl
+23:45:07 TEXT: (MaterialLibrary): Added new material
+23:45:08 TEXT: (ObjectEngine3D): Object file was open:/Sourse/Models/defaultMaterial.obj
+23:45:08 TEXT: (MaterialLibrary): Material file was open:/Sourse/Models/defaultMaterial.mtl
+23:45:08 TEXT: (MaterialLibrary): Added new material
