@@ -15,6 +15,8 @@ SOURCES += \
     Engine/Group.cpp \
     Engine/Logger.cpp \
     Engine/MainWindow.cpp \
+    Game/ChessDesk.cpp \
+    Game/ChessFigures.cpp \
     Models/Material.cpp \
     Models/MaterialLibrary.cpp \
     Models/ObjectEngine3D.cpp \
@@ -30,6 +32,8 @@ HEADERS += \
     Engine/Group.h \
     Engine/Logger.h \
     Engine/MainWindow.h \
+    Game/ChessDesk.h \
+    Game/ChessFigures.h \
     Models/Material.h \
     Models/MaterialLibrary.h \
     Models/ObjectEngine3D.h \
@@ -47,7 +51,7 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 DISTFILES +=
 
 RESOURCES += \
-    Models.qrc \
+    Chess.qrc \
     Shaders.qrc \
     Textures.qrc
 

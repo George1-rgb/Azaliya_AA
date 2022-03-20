@@ -1,0 +1,37 @@
+<RCC>
+    <qresource prefix="/">
+        <file>Sourse/Models/Chess/1.mtl</file>
+        <file>Sourse/Models/Chess/1.obj</file>
+        <file>Sourse/Models/Chess/2.mtl</file>
+        <file>Sourse/Models/Chess/2.obj</file>
+        <file>Sourse/Models/Chess/3.mtl</file>
+        <file>Sourse/Models/Chess/3.obj</file>
+        <file>Sourse/Models/Chess/4.mtl</file>
+        <file>Sourse/Models/Chess/4.obj</file>
+        <file>Sourse/Models/Chess/5.mtl</file>
+        <file>Sourse/Models/Chess/5.obj</file>
+        <file>Sourse/Models/Chess/6.mtl</file>
+        <file>Sourse/Models/Chess/6.obj</file>
+        <file>Sourse/Models/Chess/7.mtl</file>
+        <file>Sourse/Models/Chess/7.obj</file>
+        <file>Sourse/Models/Chess/8.mtl</file>
+        <file>Sourse/Models/Chess/8.obj</file>
+        <file>Sourse/Models/Chess/9.mtl</file>
+        <file>Sourse/Models/Chess/9.obj</file>
+        <file>Sourse/Models/Chess/10.mtl</file>
+        <file>Sourse/Models/Chess/10.obj</file>
+        <file>Sourse/Models/Chess/11.mtl</file>
+        <file>Sourse/Models/Chess/11.obj</file>
+        <file>Sourse/Models/Chess/12.mtl</file>
+        <file>Sourse/Models/Chess/12.obj</file>
+        <file>Sourse/Models/Chess/13.mtl</file>
+        <file>Sourse/Models/Chess/13.obj</file>
+        <file>Sourse/Models/Chess/14.mtl</file>
+        <file>Sourse/Models/Chess/14.obj</file>
+        <file>Sourse/Models/Chess/15.mtl</file>
+        <file>Sourse/Models/Chess/15.obj</file>
+        <file>Sourse/Models/Chess/16.mtl</file>
+        <file>Sourse/Models/Chess/16.obj</file>
+        <file>Sourse/Models/Chess/desk.jpg</file>
+    </qresource>
+</RCC>

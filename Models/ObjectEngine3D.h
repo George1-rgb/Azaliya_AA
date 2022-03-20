@@ -14,6 +14,7 @@ public:
     void addObject(SimpleObject3D* obj);
     SimpleObject3D* getObject(quint32 index);
     void calculateTBN(QVector<VertexData> &vertData);
+    void move2D(const QVector2D &m);
     virtual void rotate(const QQuaternion &r) override;
     virtual void translate(const QVector3D &t) override;
     virtual void scale(const float &s) override;

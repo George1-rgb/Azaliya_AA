@@ -23,4 +23,25 @@ struct VertexData
     QVector3D tangent;
     QVector3D bitangent;
 };
+
+enum Chess
+{
+    Bishop = 0,
+    Bishop2,
+    King,
+    Knight,
+    Knight2,
+    Pawn1,
+    Pawn2,
+    Pawn3,
+    Pawn4,
+    Pawn5,
+    Pawn6,
+    Pawn7,
+    Pawn8,
+    Queen,
+    Rook,
+    Rook2,
+};
+
 #endif // TYPES_H

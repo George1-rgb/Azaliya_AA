@@ -4,7 +4,6 @@
 #include <QMouseEvent>
 #include <QKeyEvent>
 #include <QQuaternion>
-#include <QDebug>
 #include <QOpenGLContext>
 #include "Models/ObjectEngine3D.h"
 #include "Transformational.h"
@@ -13,23 +12,30 @@
 #include <QtMath>
 #include "Camera.h"
 #include "SkyBox.h"
-#include <QFile>
 #include <QStringList>
 #include <QOpenGLFunctions>
 #include <QOpenGLContext>
 #include "Models/Material.h"
 #include <QOpenGLFramebufferObject>
-
+#include <Game/ChessDesk.h>
+#include <Game/ChessFigures.h>
+#include <QPushButton>
+#include <QLineEdit>
 widget::widget(QWidget *parent)
     : QOpenGLWidget(parent)
 {
+    button = new QPushButton(this);
+    lineEdit = new QLineEdit(this);
+    button->move(130.0f, 0.0f);
+
+
     camera = new Camera;
-    camera->translate(QVector3D(0.0f, 0.0f, 0.0f));
-   // camera->rotate(QQuaternion::fromAxisAndAngle(1.0f, 1.0f, 0.0f, 45.0f));
+    camera->translate(QVector3D(0.0f, 0.0f, -100.0f));
+    camera->rotate(QQuaternion::fromAxisAndAngle(1.0f, 0.0f, 0.0f, 45.0f));
     setFocusPolicy(Qt::StrongFocus);
     fbHeight = 1024;
     fbWidth = 1024;
-
+    connect(button, SIGNAL(clicked()), SLOT(OnButtonClicked()));
     projectionLightMatrix.setToIdentity();
     projectionLightMatrix.ortho(-40.0f, 40.0f, -40.0f, 40.0f, -40.0f, 40.0f);
 
@@ -50,9 +56,7 @@ widget::~widget()
     delete skyBox;
     for (int i = 0; i < objects.size(); i++)
         delete objects[i];
-//    for (int i = 0; i < groups.size();  i++)
-//        delete groups[i];
-
+    delete Desk;
 }
 
 //virtual openGL functions
@@ -64,36 +68,46 @@ void widget::initializeGL()
 
     initShaders();
 
-    objects.append(new ObjectEngine3D);
-    objects[objects.size() - 1]->loadObjectFromFile(":/Sourse/Models/thor.obj");
-    objects[objects.size() - 1]->scale(2.0f);
-    objects[objects.size() - 1]->translate(QVector3D(-8.0f, 2.0f, 0.0f));
-    transformObjects.append(objects[objects.size() - 1]);
-
-    objects.append(new ObjectEngine3D);
-    objects[objects.size() - 1]->loadObjectFromFile(":/Sourse/Models/case.obj");
-    objects[objects.size() - 1]->translate(QVector3D(0.0f, 2.0f, 8.0f));
-    transformObjects.append(objects[objects.size() - 1]);
-
-    objects.append(new ObjectEngine3D);
-    objects[objects.size() - 1]->loadObjectFromFile(":/Sourse/Models/defaultMaterial.obj");
-    objects[objects.size() - 1]->translate(QVector3D(8.0f, 2.0f, 0.0f));
-    transformObjects.append(objects[objects.size() - 1]);
 
     //floor
-    QImage diffuseMap(":/Sourse/Models/Abstract_Organic_006_basecolor.jpg");
-    QImage normalMap(":/Sourse/Models/Abstract_Organic_006_normal.jpg");
-    initCube(40.0f, 2.0f, 40.0f, &diffuseMap, &normalMap);
-    objects[objects.size() - 1]->translate(QVector3D(0.0f, -2.0f, 0.0f));
-    transformObjects.append(objects[objects.size() - 1]);
-
+    Desk = new ChessDesk;
+    transformObjects.append(Desk);
+    FiguresDark = new ChessFigures;
+    transformObjects.append(FiguresDark);
+    //TEST///////
+    //////////////
+    FiguresDark->getFigure(Chess::Rook)->move2D(QVector2D(Desk->getPosition("h8")->x(), Desk->getPosition("h8")->y()));
+    FiguresDark->getFigure(Chess::Bishop)->move2D(QVector2D(Desk->getPosition("g8")->x(), Desk->getPosition("g8")->y()));
+    FiguresDark->getFigure(Chess::Knight)->move2D(QVector2D(Desk->getPosition("f8")->x(), Desk->getPosition("f8")->y()));
+    FiguresDark->getFigure(Chess::King)->move2D(QVector2D(Desk->getPosition("e8")->x(), Desk->getPosition("e8")->y()));
+    FiguresDark->getFigure(Chess::Queen)->move2D(QVector2D(Desk->getPosition("d8")->x(), Desk->getPosition("d8")->y()));
+    FiguresDark->getFigure(Chess::Knight2)->move2D(QVector2D(Desk->getPosition("c8")->x(), Desk->getPosition("c8")->y()));
+    FiguresDark->getFigure(Chess::Bishop2)->move2D(QVector2D(Desk->getPosition("b8")->x(), Desk->getPosition("h8")->y()));
+    FiguresDark->getFigure(Chess::Rook2)->move2D(QVector2D(Desk->getPosition("a8")->x(), Desk->getPosition("a8")->y()));
+    FiguresDark->getFigure(Chess::Pawn1)->move2D(QVector2D(Desk->getPosition("a7")->x(), Desk->getPosition("a7")->y()));
+    qDebug() << *Desk->getPosition("a7");
+    FiguresDark->getFigure(Chess::Pawn2)->move2D(QVector2D(Desk->getPosition("b7")->x(), Desk->getPosition("b7")->y()));
+    qDebug() << *Desk->getPosition("b7");
+    FiguresDark->getFigure(Chess::Pawn3)->move2D(QVector2D(Desk->getPosition("c7")->x(), Desk->getPosition("c7")->y()));
+    qDebug() << *Desk->getPosition("c7");
+    FiguresDark->getFigure(Chess::Pawn4)->move2D(QVector2D(Desk->getPosition("d7")->x(), Desk->getPosition("d7")->y()));
+    qDebug() << *Desk->getPosition("d7");
+    FiguresDark->getFigure(Chess::Pawn5)->move2D(QVector2D(Desk->getPosition("e7")->x(), Desk->getPosition("e7")->y()));
+    qDebug() << *Desk->getPosition("e7");
+    FiguresDark->getFigure(Chess::Pawn6)->move2D(QVector2D(Desk->getPosition("f7")->x(), Desk->getPosition("f7")->y()));
+    qDebug() << *Desk->getPosition("f7");
+    FiguresDark->getFigure(Chess::Pawn7)->move2D(QVector2D(Desk->getPosition("g7")->x(), Desk->getPosition("g7")->y()));
+    qDebug() << *Desk->getPosition("g7");
+    FiguresDark->getFigure(Chess::Pawn8)->move2D(QVector2D(Desk->getPosition("h7")->x(), Desk->getPosition("h7")->y()));
+    qDebug() << *Desk->getPosition("h7");
+    //////////////
     //camera
     QMatrix4x4 tmp;
     tmp.setToIdentity();
     camera->setGlobalTransform(tmp);
 
     //skybox
-    skyBox = new SkyBox(100, QImage(":/Sourse/Models/pngegg.png"));
+    skyBox = new SkyBox(1000, QImage(":/Sourse/Models/pngegg.png"));
 
     depthBuffer = new QOpenGLFramebufferObject(fbWidth, fbHeight, QOpenGLFramebufferObject::Depth);
 
@@ -104,7 +118,7 @@ void widget::resizeGL(int width, int height)
 {
     float aspect = (float)width / (float)height;
     projectionMatrix.setToIdentity();
-    projectionMatrix.perspective(45, aspect, 0.01f, 10000.0f);
+    projectionMatrix.perspective(45, aspect, 0.01f, 1000.0f);
 }
 
 void widget::paintGL()
@@ -113,35 +127,27 @@ void widget::paintGL()
     depthBuffer->bind();
     glViewport(0, 0, fbWidth, fbHeight);
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-
     shaderDepthProgram.bind();
     shaderDepthProgram.setUniformValue("u_projectionLightMatrix", projectionLightMatrix);
     shaderDepthProgram.setUniformValue("u_shadowLightMatrix", shadowLightMatrix);
-
     for (int i = 0; i < transformObjects.size(); i++)
     {
         transformObjects[i]->drawModel(&shaderDepthProgram, context()->functions());
     }
     shaderDepthProgram.release();
-
     depthBuffer->release();
-
     GLuint texture = depthBuffer->texture();
-
     context()->functions()->glActiveTexture(GL_TEXTURE4);
     glBindTexture(GL_TEXTURE_2D, texture);
 
     //Отрисовка в экран
     glViewport(0, 0, width(), height());
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-
     shaderSkyBoxProgram.bind();
     shaderSkyBoxProgram.setUniformValue("u_projectionMatrix", projectionMatrix);
-
     camera->drawModel(&shaderSkyBoxProgram);
     skyBox->drawModel(&shaderSkyBoxProgram,  context()->functions());
     shaderSkyBoxProgram.release();
-
     shaderProgram.bind();
     shaderProgram.setUniformValue("u_shadowMap", GL_TEXTURE4 - GL_TEXTURE0);
     shaderProgram.setUniformValue("u_projectionMatrix", projectionMatrix);
@@ -182,80 +188,6 @@ void widget::initShaders()
         close();
 }
 
-void widget::initCube(float width, float height, float depth, QImage* diffuseMap, QImage* normalMap)
-{
-    float width_div_2 = width / 2.0f;
-    float height_div_2 = height / 2.0f;
-    float depth_div_2 = depth / 2.0f;
-    QVector<VertexData> vertexes;
-    vertexes.push_back(VertexData(QVector3D(-width_div_2, height_div_2, depth_div_2), QVector2D(0.0f, 1.0f), QVector3D(0.0f, 0.0f, 1.0f)));
-       vertexes.push_back(VertexData(QVector3D(-width_div_2, -height_div_2, depth_div_2), QVector2D(0.0f, 0.0f), QVector3D(0.0f, 0.0f, 1.0f)));
-       vertexes.push_back(VertexData(QVector3D(width_div_2, height_div_2, depth_div_2), QVector2D(1.0f, 1.0f), QVector3D(0.0f, 0.0f, 1.0f)));
-       vertexes.push_back(VertexData(QVector3D(width_div_2, height_div_2, depth_div_2), QVector2D(1.0f, 1.0f), QVector3D(0.0f, 0.0f, 1.0f)));
-       vertexes.push_back(VertexData(QVector3D(-width_div_2, -height_div_2, depth_div_2), QVector2D(0.0f, 0.0f), QVector3D(0.0f, 0.0f, 1.0f)));
-       vertexes.push_back(VertexData(QVector3D(width_div_2, -height_div_2, depth_div_2), QVector2D(1.0f, 0.0f), QVector3D(0.0f, 0.0f, 1.0f)));
-
-       vertexes.push_back(VertexData(QVector3D(width_div_2, height_div_2, depth_div_2), QVector2D(0.0f, 1.0f), QVector3D(1.0f, 0.0f, 0.0f)));
-       vertexes.push_back(VertexData(QVector3D(width_div_2, -height_div_2, depth_div_2), QVector2D(0.0f, 0.0f), QVector3D(1.0f, 0.0f, 0.0f)));
-       vertexes.push_back(VertexData(QVector3D(width_div_2, height_div_2, -depth_div_2), QVector2D(1.0f, 1.0f), QVector3D(1.0f, 0.0f, 0.0f)));
-       vertexes.push_back(VertexData(QVector3D(width_div_2, height_div_2, -depth_div_2), QVector2D(1.0f, 1.0f), QVector3D(1.0f, 0.0f, 0.0f)));
-       vertexes.push_back(VertexData(QVector3D(width_div_2, -height_div_2, depth_div_2), QVector2D(0.0f, 0.0f), QVector3D(1.0f, 0.0f, 0.0f)));
-       vertexes.push_back(VertexData(QVector3D(width_div_2, -height_div_2, -depth_div_2), QVector2D(1.0f, 0.0f), QVector3D(1.0f, 0.0f, 0.0f)));
-
-       vertexes.push_back(VertexData(QVector3D(width_div_2, height_div_2, depth_div_2), QVector2D(0.0f, 1.0f), QVector3D(0.0f, 1.0f, 0.0f)));
-       vertexes.push_back(VertexData(QVector3D(width_div_2, height_div_2, -depth_div_2), QVector2D(0.0f, 0.0f), QVector3D(0.0f, 1.0f, 0.0f)));
-       vertexes.push_back(VertexData(QVector3D(-width_div_2, height_div_2, depth_div_2), QVector2D(1.0f, 1.0f), QVector3D(0.0f, 1.0f, 0.0f)));
-       vertexes.push_back(VertexData(QVector3D(-width_div_2, height_div_2, depth_div_2), QVector2D(1.0f, 1.0f), QVector3D(0.0f, 1.0f, 0.0f)));
-       vertexes.push_back(VertexData(QVector3D(width_div_2, height_div_2, -depth_div_2), QVector2D(0.0f, 0.0f), QVector3D(0.0f, 1.0f, 0.0f)));
-       vertexes.push_back(VertexData(QVector3D(-width_div_2, height_div_2, -depth_div_2), QVector2D(1.0f, 0.0f), QVector3D(0.0f, 1.0f, 0.0f)));
-
-       vertexes.push_back(VertexData(QVector3D(width_div_2, height_div_2, -depth_div_2), QVector2D(0.0f, 1.0f), QVector3D(0.0f, 0.0f, -1.0f)));
-       vertexes.push_back(VertexData(QVector3D(width_div_2, -height_div_2, -depth_div_2), QVector2D(0.0f, 0.0f), QVector3D(0.0f, 0.0f, -1.0f)));
-       vertexes.push_back(VertexData(QVector3D(-width_div_2, height_div_2, -depth_div_2), QVector2D(1.0f, 1.0f), QVector3D(0.0f, 0.0f, -1.0f)));
-       vertexes.push_back(VertexData(QVector3D(-width_div_2, height_div_2, -depth_div_2), QVector2D(1.0f, 1.0f), QVector3D(0.0f, 0.0f, -1.0f)));
-       vertexes.push_back(VertexData(QVector3D(width_div_2, -height_div_2, -depth_div_2), QVector2D(0.0f, 0.0f), QVector3D(0.0f, 0.0f, -1.0f)));
-       vertexes.push_back(VertexData(QVector3D(-width_div_2, -height_div_2, -depth_div_2), QVector2D(1.0f, 0.0f), QVector3D(0.0f, 0.0f, -1.0f)));
-
-       vertexes.push_back(VertexData(QVector3D(-width_div_2, height_div_2, depth_div_2), QVector2D(0.0f, 1.0f), QVector3D(-1.0f, 0.0f, 0.0f)));
-       vertexes.push_back(VertexData(QVector3D(-width_div_2, height_div_2, -depth_div_2), QVector2D(0.0f, 0.0f), QVector3D(-1.0f, 0.0f, 0.0f)));
-       vertexes.push_back(VertexData(QVector3D(-width_div_2, -height_div_2, depth_div_2), QVector2D(1.0f, 1.0f), QVector3D(-1.0f, 0.0f, 0.0f)));
-       vertexes.push_back(VertexData(QVector3D(-width_div_2, -height_div_2, depth_div_2), QVector2D(1.0f, 1.0f), QVector3D(-1.0f, 0.0f, 0.0f)));
-       vertexes.push_back(VertexData(QVector3D(-width_div_2, height_div_2, -depth_div_2), QVector2D(0.0f, 0.0f), QVector3D(-1.0f, 0.0f, 0.0f)));
-       vertexes.push_back(VertexData(QVector3D(-width_div_2, -height_div_2, -depth_div_2), QVector2D(1.0f, 0.0f), QVector3D(-1.0f, 0.0f, 0.0f)));
-
-       vertexes.push_back(VertexData(QVector3D(-width_div_2, -height_div_2, depth_div_2), QVector2D(0.0f, 1.0f), QVector3D(0.0f, -1.0f, 0.0f)));
-       vertexes.push_back(VertexData(QVector3D(-width_div_2, -height_div_2, -depth_div_2), QVector2D(0.0f, 0.0f), QVector3D(0.0f, -1.0f, 0.0f)));
-       vertexes.push_back(VertexData(QVector3D(width_div_2, -height_div_2, depth_div_2), QVector2D(1.0f, 1.0f), QVector3D(0.0f, -1.0f, 0.0f)));
-       vertexes.push_back(VertexData(QVector3D(width_div_2, -height_div_2, depth_div_2), QVector2D(1.0f, 1.0f), QVector3D(0.0f, -1.0f, 0.0f)));
-       vertexes.push_back(VertexData(QVector3D(-width_div_2, -height_div_2, -depth_div_2), QVector2D(0.0f, 0.0f), QVector3D(0.0f, -1.0f, 0.0f)));
-       vertexes.push_back(VertexData(QVector3D(width_div_2, -height_div_2, -depth_div_2), QVector2D(1.0f, 0.0f), QVector3D(0.0f, -1.0f, 0.0f)));
-
-       QVector<GLuint> indexes;
-       indexes.reserve(36);
-
-       for (int i = 0; i < 36; ++i)
-       {
-           indexes.push_back(i);
-       }
-
-    Material* newMtl = new Material;
-    if (diffuseMap != NULL)
-    newMtl->setDiffuseMap(*diffuseMap);
-    if (normalMap != NULL)
-    newMtl->setNormalMap(*normalMap);
-    newMtl->setShines(96);
-    newMtl->setDiffuseColor(QVector3D(1.0f, 1.0, 1.0f));
-    newMtl->setSpecularColor(QVector3D(1.0f, 1.0, 1.0f));
-    newMtl->setAmbientColor(QVector3D(1.0f, 1.0, 1.0f));
-
-    ObjectEngine3D* objEngine = new ObjectEngine3D;
-    objEngine->calculateTBN(vertexes);
-    objEngine->addObject(new SimpleObject3D(vertexes, indexes, newMtl));
-    objects.append(objEngine);
-}
-
-
-
 //Events
 void widget::mousePressEvent(QMouseEvent *event)
 {
@@ -269,9 +201,6 @@ void widget::mouseMoveEvent(QMouseEvent *event)
 {
     if(event->buttons() == Qt::LeftButton)
         updateAngle(event);
-//    else if (event->buttons() == Qt::MiddleButton)
-//        updateCameraLocation(event);
-
 
     update();
 }
@@ -286,7 +215,7 @@ void widget::timerEvent(QTimerEvent *event)
 {
     Q_UNUSED(event);
 
-    lightRotateX += 0.01;
+    lightRotateY += 0.01;
     shadowLightMatrix.setToIdentity();
     shadowLightMatrix.rotate(lightRotateX, 1.0f, 0.0f, 0.0f);
     shadowLightMatrix.rotate(lightRotateY, 0.0f, 1.0f, 0.0f);
@@ -300,7 +229,6 @@ void widget::timerEvent(QTimerEvent *event)
 
 void widget::keyPressEvent(QKeyEvent *event)
 {
-    qDebug() << "Event has done!";
     switch (event->key())
     {
     case Qt::Key_Left:
@@ -313,10 +241,19 @@ void widget::keyPressEvent(QKeyEvent *event)
 
         break;
    case Qt::Key_Up:
-        camera->translate(QVector3D(0.0f, 0.0f, 0.1f));
+
         break;
     }
     update();
+}
+
+void widget::OnButtonClicked()
+{
+   QString key = lineEdit->text();
+   qDebug() << key;
+   QVector2D pos = *Desk->getPosition(key);
+   qDebug() << pos;
+
 }
 
 //*//
@@ -329,7 +266,7 @@ void widget::updateAngle(QMouseEvent* event)
     float angle = diff.length() / 2.0f;
     QVector3D axis = QVector3D(diff.y(), diff.x(), 0.0f);
 
-    camera->rotate(QQuaternion::fromAxisAndAngle(QVector3D(1.0f, 0.0f, 0.0f), angle));
+    camera->rotate(QQuaternion::fromAxisAndAngle(axis, angle));
 }
 
 void widget::updateScale(QWheelEvent* event)
@@ -340,12 +277,4 @@ void widget::updateScale(QWheelEvent* event)
         camera->translate(QVector3D(0.0f, 0.0f, -0.25f));
 }
 
-//void widget::updateCameraLocation(QMouseEvent *event)
-//{
-
-//    QVector2D diff = QVector2D(event->position()) - mousePosition;
-//    mousePosition = QVector2D(event->position());
-//    camera->translate(QVector3D(diff, 0.0f));
-//}
-//*//
 

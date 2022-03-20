@@ -21,7 +21,7 @@ MainWindow::~MainWindow()
 
 void MainWindow::resizeEvent(QResizeEvent *event)
 {
-    scene->resize(event->size().width(), event->size().height() - event->size().height() / 5.0f);
+    scene->resize(event->size().width(), event->size().height());
 }
 
 void MainWindow::setup()

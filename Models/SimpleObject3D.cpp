@@ -4,7 +4,7 @@
 #include <QOpenGLTexture>
 #include <QOpenGLFunctions>
 #include <QOpenGLShaderProgram>
-
+#include <QDebug>
 SimpleObject3D::SimpleObject3D()
     : indexBuffer(QOpenGLBuffer::IndexBuffer), diffuseMap(0), Scale(1.0f)
 {
@@ -150,6 +150,7 @@ void SimpleObject3D::rotate(const QQuaternion &r)
 void SimpleObject3D::translate(const QVector3D &t)
 {
     Translation += t;
+    qDebug() << "Translation: " << Translation;
 }
 
 void SimpleObject3D::scale(const float &s)
@@ -160,4 +161,9 @@ void SimpleObject3D::scale(const float &s)
 void SimpleObject3D::setGlobalTransform(const QMatrix4x4 &g)
 {
     GlobalTransform = g;
+}
+
+void SimpleObject3D::move2D(const QVector2D &m)
+{
+    Translation = QVector3D(m.x(), Translation.y(), m.y());
 }

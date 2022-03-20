@@ -1,0 +1,16 @@
+
+16:16:21 TEXT: (ObjectEngine3D): Object file was open:/Sourse/Models/king.obj
+16:16:21 TEXT: (MaterialLibrary): Material file was open:/Sourse/Models/king.mtl
+16:16:21 TEXT: (MaterialLibrary): Added new material
+16:16:22 TEXT: (MaterialLibrary): Added new material
+16:16:22 TEXT: (MaterialLibrary): Added new material
+16:16:23 TEXT: (MaterialLibrary): Added new material
+16:16:23 TEXT: (MaterialLibrary): Added new material
+16:16:24 TEXT: (MaterialLibrary): Added new material
+16:16:25 TEXT: (MaterialLibrary): Added new material
+16:16:25 TEXT: (MaterialLibrary): Added new material
+16:16:26 TEXT: (MaterialLibrary): Added new material
+16:16:26 TEXT: (MaterialLibrary): Added new material
+16:16:27 TEXT: (MaterialLibrary): Added new material
+16:16:28 TEXT: (MaterialLibrary): Added new material
+16:16:28 TEXT: (MaterialLibrary): Added new material

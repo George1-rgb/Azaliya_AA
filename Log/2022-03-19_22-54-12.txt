@@ -1,0 +1,4 @@
+
+22:54:12 TEXT: (ObjectEngine3D): Object file was open:/Sourse/Models/Chess/1.obj
+22:54:12 TEXT: (MaterialLibrary): Material file was open:/Sourse/Models/Chess/1.mtl
+22:54:12 TEXT: (MaterialLibrary): Added new material

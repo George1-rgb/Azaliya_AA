@@ -4,8 +4,9 @@
         <file>Sourse/Models/Abstract_Organic_006_normal.jpg</file>
         <file>Sourse/Models/car.jpeg</file>
         <file>Sourse/Models/cube.png</file>
-        <file>Sourse/Models/desk.jpg</file>
         <file>Sourse/Models/normal_map.jpg</file>
         <file>Sourse/Models/pngegg.png</file>
+        <file>Sourse/Models/chess.jpg</file>
+        <file>Sourse/Models/chessDesk.jpg</file>
     </qresource>
 </RCC>

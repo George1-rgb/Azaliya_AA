@@ -1,12 +1,6 @@
 <RCC>
     <qresource prefix="/">
-        <file>Sourse/Models/case.mtl</file>
-        <file>Sourse/Models/case.obj</file>
-        <file>Sourse/Models/defaultMaterial.mtl</file>
-        <file>Sourse/Models/defaultMaterial.obj</file>
-        <file>Sourse/Models/moon.mtl</file>
-        <file>Sourse/Models/sphere.mtl</file>
-        <file>Sourse/Models/thor.mtl</file>
-        <file>Sourse/Models/thor.obj</file>
+        <file>Sourse/Models/king.mtl</file>
+        <file>Sourse/Models/king.obj</file>
     </qresource>
 </RCC>

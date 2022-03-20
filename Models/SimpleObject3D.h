@@ -23,6 +23,7 @@ public:
     void translate(const QVector3D &t);
     void scale(const float &s);
     void setGlobalTransform(const QMatrix4x4 &g);
+    void move2D(const QVector2D &m);
 private:
     QOpenGLBuffer vertexBuffer;
     QOpenGLBuffer indexBuffer;

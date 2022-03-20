@@ -1,5 +1,6 @@
 #include "ObjectEngine3D.h"
 #include <QFile>
+#include <QDebug>
 #include <QFileInfo>
 #include <QStringList>
 #include <QTextStream>
@@ -144,6 +145,12 @@ void ObjectEngine3D::calculateTBN(QVector<VertexData> &vertData)
         vertData[i + 1].bitangent = bitangent;
         vertData[i + 2].bitangent = bitangent;
     }
+}
+
+void ObjectEngine3D::move2D(const QVector2D &m)
+{
+    for (int i = 0; i < objects.size(); i++)
+        objects[i]->move2D(m);
 }
 
 void ObjectEngine3D::rotate(const QQuaternion &r)

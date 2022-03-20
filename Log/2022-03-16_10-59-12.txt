@@ -1,0 +1,19 @@
+
+10:59:12 TEXT: (ObjectEngine3D): Object file was open:/Sourse/Models/king.obj
+10:59:12 TEXT: (MaterialLibrary): Material file was open:/Sourse/Models/king.mtl
+10:59:12 TEXT: (MaterialLibrary): Added new material
+10:59:12 TEXT: (MaterialLibrary): Added new material
+10:59:13 TEXT: (MaterialLibrary): Added new material
+10:59:13 TEXT: (MaterialLibrary): Added new material
+10:59:13 TEXT: (MaterialLibrary): Added new material
+10:59:14 TEXT: (MaterialLibrary): Added new material
+10:59:14 TEXT: (MaterialLibrary): Added new material
+10:59:14 TEXT: (MaterialLibrary): Added new material
+10:59:15 TEXT: (MaterialLibrary): Added new material
+10:59:15 TEXT: (MaterialLibrary): Added new material
+10:59:15 TEXT: (MaterialLibrary): Added new material
+10:59:16 TEXT: (MaterialLibrary): Added new material
+10:59:16 TEXT: (MaterialLibrary): Added new material
+10:59:17 TEXT: (ObjectEngine3D): Object file was open:/Sourse/Models/chessDesk.obj
+10:59:17 TEXT: (MaterialLibrary): Material file was open:/Sourse/Models/chessDesk.mtl
+10:59:17 TEXT: (MaterialLibrary): Added new material

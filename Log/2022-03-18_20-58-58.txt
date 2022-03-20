@@ -1,0 +1,241 @@
+
+20:58:58 TEXT: (ObjectEngine3D): Object file was open:/Sourse/Models/Chess/1.obj
+20:58:58 TEXT: (MaterialLibrary): Material file was open:/Sourse/Models/Chess/1.mtl
+20:58:58 TEXT: (MaterialLibrary): Added new material
+20:58:58 TEXT: (MaterialLibrary): Added new material
+20:58:58 TEXT: (MaterialLibrary): Added new material
+20:58:58 TEXT: (MaterialLibrary): Added new material
+20:58:58 TEXT: (MaterialLibrary): Added new material
+20:58:58 TEXT: (MaterialLibrary): Added new material
+20:58:58 TEXT: (MaterialLibrary): Added new material
+20:58:58 TEXT: (MaterialLibrary): Added new material
+20:58:58 TEXT: (MaterialLibrary): Added new material
+20:58:58 TEXT: (MaterialLibrary): Added new material
+20:58:58 TEXT: (MaterialLibrary): Added new material
+20:58:58 TEXT: (MaterialLibrary): Added new material
+20:58:58 TEXT: (MaterialLibrary): Added new material
+20:58:58 TEXT: (ObjectEngine3D): Object file was open:/Sourse/Models/Chess/2.obj
+20:58:58 TEXT: (MaterialLibrary): Material file was open:/Sourse/Models/Chess/2.mtl
+20:58:58 TEXT: (MaterialLibrary): Added new material
+20:58:58 TEXT: (MaterialLibrary): Added new material
+20:58:58 TEXT: (MaterialLibrary): Added new material
+20:58:58 TEXT: (MaterialLibrary): Added new material
+20:58:58 TEXT: (MaterialLibrary): Added new material
+20:58:58 TEXT: (MaterialLibrary): Added new material
+20:58:58 TEXT: (MaterialLibrary): Added new material
+20:58:58 TEXT: (MaterialLibrary): Added new material
+20:58:58 TEXT: (MaterialLibrary): Added new material
+20:58:58 TEXT: (MaterialLibrary): Added new material
+20:58:58 TEXT: (MaterialLibrary): Added new material
+20:58:58 TEXT: (MaterialLibrary): Added new material
+20:58:58 TEXT: (MaterialLibrary): Added new material
+20:58:58 TEXT: (ObjectEngine3D): Object file was open:/Sourse/Models/Chess/3.obj
+20:58:58 TEXT: (MaterialLibrary): Material file was open:/Sourse/Models/Chess/3.mtl
+20:58:58 TEXT: (MaterialLibrary): Added new material
+20:58:58 TEXT: (MaterialLibrary): Added new material
+20:58:58 TEXT: (MaterialLibrary): Added new material
+20:58:58 TEXT: (MaterialLibrary): Added new material
+20:58:58 TEXT: (MaterialLibrary): Added new material
+20:58:58 TEXT: (MaterialLibrary): Added new material
+20:58:58 TEXT: (MaterialLibrary): Added new material
+20:58:58 TEXT: (MaterialLibrary): Added new material
+20:58:58 TEXT: (MaterialLibrary): Added new material
+20:58:58 TEXT: (MaterialLibrary): Added new material
+20:58:58 TEXT: (MaterialLibrary): Added new material
+20:58:58 TEXT: (MaterialLibrary): Added new material
+20:58:58 TEXT: (MaterialLibrary): Added new material
+20:58:58 TEXT: (ObjectEngine3D): Object file was open:/Sourse/Models/Chess/4.obj
+20:58:58 TEXT: (MaterialLibrary): Material file was open:/Sourse/Models/Chess/4.mtl
+20:58:58 TEXT: (MaterialLibrary): Added new material
+20:58:58 TEXT: (MaterialLibrary): Added new material
+20:58:58 TEXT: (MaterialLibrary): Added new material
+20:58:58 TEXT: (MaterialLibrary): Added new material
+20:58:58 TEXT: (MaterialLibrary): Added new material
+20:58:58 TEXT: (MaterialLibrary): Added new material
+20:58:58 TEXT: (MaterialLibrary): Added new material
+20:58:58 TEXT: (MaterialLibrary): Added new material
+20:58:58 TEXT: (MaterialLibrary): Added new material
+20:58:58 TEXT: (MaterialLibrary): Added new material
+20:58:58 TEXT: (MaterialLibrary): Added new material
+20:58:58 TEXT: (MaterialLibrary): Added new material
+20:58:58 TEXT: (MaterialLibrary): Added new material
+20:58:59 TEXT: (ObjectEngine3D): Object file was open:/Sourse/Models/Chess/5.obj
+20:58:59 TEXT: (MaterialLibrary): Material file was open:/Sourse/Models/Chess/5.mtl
+20:58:59 TEXT: (MaterialLibrary): Added new material
+20:58:59 TEXT: (MaterialLibrary): Added new material
+20:58:59 TEXT: (MaterialLibrary): Added new material
+20:58:59 TEXT: (MaterialLibrary): Added new material
+20:58:59 TEXT: (MaterialLibrary): Added new material
+20:58:59 TEXT: (MaterialLibrary): Added new material
+20:58:59 TEXT: (MaterialLibrary): Added new material
+20:58:59 TEXT: (MaterialLibrary): Added new material
+20:58:59 TEXT: (MaterialLibrary): Added new material
+20:58:59 TEXT: (MaterialLibrary): Added new material
+20:58:59 TEXT: (MaterialLibrary): Added new material
+20:58:59 TEXT: (MaterialLibrary): Added new material
+20:58:59 TEXT: (MaterialLibrary): Added new material
+20:58:59 TEXT: (ObjectEngine3D): Object file was open:/Sourse/Models/Chess/6.obj
+20:58:59 TEXT: (MaterialLibrary): Material file was open:/Sourse/Models/Chess/6.mtl
+20:58:59 TEXT: (MaterialLibrary): Added new material
+20:58:59 TEXT: (MaterialLibrary): Added new material
+20:58:59 TEXT: (MaterialLibrary): Added new material
+20:58:59 TEXT: (MaterialLibrary): Added new material
+20:58:59 TEXT: (MaterialLibrary): Added new material
+20:58:59 TEXT: (MaterialLibrary): Added new material
+20:58:59 TEXT: (MaterialLibrary): Added new material
+20:58:59 TEXT: (MaterialLibrary): Added new material
+20:58:59 TEXT: (MaterialLibrary): Added new material
+20:58:59 TEXT: (MaterialLibrary): Added new material
+20:58:59 TEXT: (MaterialLibrary): Added new material
+20:58:59 TEXT: (MaterialLibrary): Added new material
+20:58:59 TEXT: (MaterialLibrary): Added new material
+20:58:59 TEXT: (ObjectEngine3D): Object file was open:/Sourse/Models/Chess/7.obj
+20:58:59 TEXT: (MaterialLibrary): Material file was open:/Sourse/Models/Chess/7.mtl
+20:58:59 TEXT: (MaterialLibrary): Added new material
+20:58:59 TEXT: (MaterialLibrary): Added new material
+20:58:59 TEXT: (MaterialLibrary): Added new material
+20:58:59 TEXT: (MaterialLibrary): Added new material
+20:58:59 TEXT: (MaterialLibrary): Added new material
+20:58:59 TEXT: (MaterialLibrary): Added new material
+20:58:59 TEXT: (MaterialLibrary): Added new material
+20:58:59 TEXT: (MaterialLibrary): Added new material
+20:58:59 TEXT: (MaterialLibrary): Added new material
+20:58:59 TEXT: (MaterialLibrary): Added new material
+20:58:59 TEXT: (MaterialLibrary): Added new material
+20:58:59 TEXT: (MaterialLibrary): Added new material
+20:58:59 TEXT: (MaterialLibrary): Added new material
+20:58:59 TEXT: (ObjectEngine3D): Object file was open:/Sourse/Models/Chess/8.obj
+20:58:59 TEXT: (MaterialLibrary): Material file was open:/Sourse/Models/Chess/8.mtl
+20:58:59 TEXT: (MaterialLibrary): Added new material
+20:58:59 TEXT: (MaterialLibrary): Added new material
+20:58:59 TEXT: (MaterialLibrary): Added new material
+20:58:59 TEXT: (MaterialLibrary): Added new material
+20:58:59 TEXT: (MaterialLibrary): Added new material
+20:58:59 TEXT: (MaterialLibrary): Added new material
+20:58:59 TEXT: (MaterialLibrary): Added new material
+20:58:59 TEXT: (MaterialLibrary): Added new material
+20:58:59 TEXT: (MaterialLibrary): Added new material
+20:58:59 TEXT: (MaterialLibrary): Added new material
+20:58:59 TEXT: (MaterialLibrary): Added new material
+20:58:59 TEXT: (MaterialLibrary): Added new material
+20:58:59 TEXT: (MaterialLibrary): Added new material
+20:58:59 TEXT: (ObjectEngine3D): Object file was open:/Sourse/Models/Chess/9.obj
+20:58:59 TEXT: (MaterialLibrary): Material file was open:/Sourse/Models/Chess/9.mtl
+20:58:59 TEXT: (MaterialLibrary): Added new material
+20:58:59 TEXT: (MaterialLibrary): Added new material
+20:58:59 TEXT: (MaterialLibrary): Added new material
+20:58:59 TEXT: (MaterialLibrary): Added new material
+20:58:59 TEXT: (MaterialLibrary): Added new material
+20:58:59 TEXT: (MaterialLibrary): Added new material
+20:58:59 TEXT: (MaterialLibrary): Added new material
+20:58:59 TEXT: (MaterialLibrary): Added new material
+20:58:59 TEXT: (MaterialLibrary): Added new material
+20:58:59 TEXT: (MaterialLibrary): Added new material
+20:58:59 TEXT: (MaterialLibrary): Added new material
+20:58:59 TEXT: (MaterialLibrary): Added new material
+20:58:59 TEXT: (MaterialLibrary): Added new material
+20:58:59 TEXT: (ObjectEngine3D): Object file was open:/Sourse/Models/Chess/10.obj
+20:58:59 TEXT: (MaterialLibrary): Material file was open:/Sourse/Models/Chess/10.mtl
+20:58:59 TEXT: (MaterialLibrary): Added new material
+20:58:59 TEXT: (MaterialLibrary): Added new material
+20:58:59 TEXT: (MaterialLibrary): Added new material
+20:58:59 TEXT: (MaterialLibrary): Added new material
+20:58:59 TEXT: (MaterialLibrary): Added new material
+20:58:59 TEXT: (MaterialLibrary): Added new material
+20:58:59 TEXT: (MaterialLibrary): Added new material
+20:58:59 TEXT: (MaterialLibrary): Added new material
+20:58:59 TEXT: (MaterialLibrary): Added new material
+20:58:59 TEXT: (MaterialLibrary): Added new material
+20:58:59 TEXT: (MaterialLibrary): Added new material
+20:58:59 TEXT: (MaterialLibrary): Added new material
+20:58:59 TEXT: (MaterialLibrary): Added new material
+20:58:59 TEXT: (ObjectEngine3D): Object file was open:/Sourse/Models/Chess/11.obj
+20:58:59 TEXT: (MaterialLibrary): Material file was open:/Sourse/Models/Chess/11.mtl
+20:58:59 TEXT: (MaterialLibrary): Added new material
+20:58:59 TEXT: (MaterialLibrary): Added new material
+20:58:59 TEXT: (MaterialLibrary): Added new material
+20:58:59 TEXT: (MaterialLibrary): Added new material
+20:58:59 TEXT: (MaterialLibrary): Added new material
+20:58:59 TEXT: (MaterialLibrary): Added new material
+20:59:00 TEXT: (MaterialLibrary): Added new material
+20:59:00 TEXT: (MaterialLibrary): Added new material
+20:59:00 TEXT: (MaterialLibrary): Added new material
+20:59:00 TEXT: (MaterialLibrary): Added new material
+20:59:00 TEXT: (MaterialLibrary): Added new material
+20:59:00 TEXT: (MaterialLibrary): Added new material
+20:59:00 TEXT: (MaterialLibrary): Added new material
+20:59:00 TEXT: (ObjectEngine3D): Object file was open:/Sourse/Models/Chess/12.obj
+20:59:00 TEXT: (MaterialLibrary): Material file was open:/Sourse/Models/Chess/12.mtl
+20:59:00 TEXT: (MaterialLibrary): Added new material
+20:59:00 TEXT: (MaterialLibrary): Added new material
+20:59:00 TEXT: (MaterialLibrary): Added new material
+20:59:00 TEXT: (MaterialLibrary): Added new material
+20:59:00 TEXT: (MaterialLibrary): Added new material
+20:59:00 TEXT: (MaterialLibrary): Added new material
+20:59:00 TEXT: (MaterialLibrary): Added new material
+20:59:00 TEXT: (MaterialLibrary): Added new material
+20:59:00 TEXT: (MaterialLibrary): Added new material
+20:59:00 TEXT: (MaterialLibrary): Added new material
+20:59:00 TEXT: (MaterialLibrary): Added new material
+20:59:00 TEXT: (MaterialLibrary): Added new material
+20:59:00 TEXT: (MaterialLibrary): Added new material
+20:59:00 TEXT: (ObjectEngine3D): Object file was open:/Sourse/Models/Chess/13.obj
+20:59:00 TEXT: (MaterialLibrary): Material file was open:/Sourse/Models/Chess/13.mtl
+20:59:00 TEXT: (MaterialLibrary): Added new material
+20:59:00 TEXT: (MaterialLibrary): Added new material
+20:59:00 TEXT: (MaterialLibrary): Added new material
+20:59:00 TEXT: (MaterialLibrary): Added new material
+20:59:00 TEXT: (MaterialLibrary): Added new material
+20:59:00 TEXT: (MaterialLibrary): Added new material
+20:59:00 TEXT: (MaterialLibrary): Added new material
+20:59:00 TEXT: (MaterialLibrary): Added new material
+20:59:00 TEXT: (MaterialLibrary): Added new material
+20:59:00 TEXT: (MaterialLibrary): Added new material
+20:59:00 TEXT: (MaterialLibrary): Added new material
+20:59:00 TEXT: (MaterialLibrary): Added new material
+20:59:00 TEXT: (MaterialLibrary): Added new material
+20:59:00 TEXT: (ObjectEngine3D): Object file was open:/Sourse/Models/Chess/14.obj
+20:59:00 TEXT: (MaterialLibrary): Material file was open:/Sourse/Models/Chess/14.mtl
+20:59:00 TEXT: (MaterialLibrary): Added new material
+20:59:00 TEXT: (MaterialLibrary): Added new material
+20:59:00 TEXT: (MaterialLibrary): Added new material
+20:59:00 TEXT: (MaterialLibrary): Added new material
+20:59:00 TEXT: (MaterialLibrary): Added new material
+20:59:00 TEXT: (MaterialLibrary): Added new material
+20:59:00 TEXT: (MaterialLibrary): Added new material
+20:59:00 TEXT: (MaterialLibrary): Added new material
+20:59:00 TEXT: (MaterialLibrary): Added new material
+20:59:00 TEXT: (MaterialLibrary): Added new material
+20:59:00 TEXT: (MaterialLibrary): Added new material
+20:59:00 TEXT: (MaterialLibrary): Added new material
+20:59:00 TEXT: (MaterialLibrary): Added new material
+20:59:00 TEXT: (ObjectEngine3D): Object file was open:/Sourse/Models/Chess/15.obj
+20:59:00 TEXT: (MaterialLibrary): Material file was open:/Sourse/Models/Chess/15.mtl
+20:59:00 TEXT: (MaterialLibrary): Added new material
+20:59:00 TEXT: (MaterialLibrary): Added new material
+20:59:00 TEXT: (MaterialLibrary): Added new material
+20:59:00 TEXT: (MaterialLibrary): Added new material
+20:59:00 TEXT: (MaterialLibrary): Added new material
+20:59:00 TEXT: (MaterialLibrary): Added new material
+20:59:00 TEXT: (MaterialLibrary): Added new material
+20:59:00 TEXT: (MaterialLibrary): Added new material
+20:59:00 TEXT: (MaterialLibrary): Added new material
+20:59:00 TEXT: (MaterialLibrary): Added new material
+20:59:00 TEXT: (MaterialLibrary): Added new material
+20:59:00 TEXT: (MaterialLibrary): Added new material
+20:59:00 TEXT: (MaterialLibrary): Added new material
+20:59:00 TEXT: (ObjectEngine3D): Object file was open:/Sourse/Models/Chess/16.obj
+20:59:00 TEXT: (MaterialLibrary): Material file was open:/Sourse/Models/Chess/16.mtl
+20:59:00 TEXT: (MaterialLibrary): Added new material
+20:59:00 TEXT: (MaterialLibrary): Added new material
+20:59:00 TEXT: (MaterialLibrary): Added new material
+20:59:00 TEXT: (MaterialLibrary): Added new material
+20:59:00 TEXT: (MaterialLibrary): Added new material
+20:59:00 TEXT: (MaterialLibrary): Added new material
+20:59:00 TEXT: (MaterialLibrary): Added new material
+20:59:00 TEXT: (MaterialLibrary): Added new material
+20:59:00 TEXT: (MaterialLibrary): Added new material
+20:59:00 TEXT: (MaterialLibrary): Added new material
+20:59:00 TEXT: (MaterialLibrary): Added new material
+20:59:00 TEXT: (MaterialLibrary): Added new material
+20:59:00 TEXT: (MaterialLibrary): Added new material

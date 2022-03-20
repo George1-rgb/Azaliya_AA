@@ -9,9 +9,12 @@
 #include "Types.h"
 #include <QBasicTimer>
 
-
+class QPushButton;
+class QLineEdit;
 class ObjectEngine3D;
 class Transformational;
+class ChessDesk;
+class ChessFigures;
 class Group;
 class Camera;
 class SkyBox;
@@ -25,30 +28,24 @@ public:
     widget(QWidget *parent = nullptr);
     ~widget();
 
-    //getters
-
-    //*//
-
-    //setters
-    void setAngle(QVector3D axis, float angle);
-    void setScale(float Scale);
-    //*//
 protected:
     virtual void initializeGL() override;
     virtual void resizeGL(int width, int height) override;
     virtual void paintGL() override;
 
-
     void initShaders();
-    void initCube(float width, float height, float depth, QImage* diffuseMap = 0, QImage* normalMap = 0);
 
     virtual void mousePressEvent(QMouseEvent* event) override;
     virtual void mouseMoveEvent(QMouseEvent* event) override;
     virtual void wheelEvent(QWheelEvent* event) override;
     virtual void timerEvent(QTimerEvent* event) override;
     virtual void keyPressEvent(QKeyEvent *event) override;
-
+public slots:
+    void OnButtonClicked();
 private:
+    QPushButton *button;
+    QLineEdit *lineEdit;
+
     QMatrix4x4 projectionMatrix;
     QMatrix4x4 projectionLightMatrix;
     QMatrix4x4 lightMatrix;
@@ -76,13 +73,10 @@ private:
     float angleGroup1;
     float angleGroup2;
     float angleMain;
-
+    ChessDesk *Desk;
+    ChessFigures* FiguresDark;
     Camera*  camera;
     SkyBox* skyBox;
-    float x = 0;
-    float y = 0;
-    float z = 0;
-
     QOpenGLFramebufferObject* depthBuffer;
     quint32 fbHeight;
     quint32 fbWidth;
